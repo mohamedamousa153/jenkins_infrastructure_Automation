@@ -73,6 +73,8 @@ pipeline {
                 // Execute the ansible-playbook command
                 dir('ansible'){
 
+
+                sh 'ls'
                 
                 sh '''
                     ansible-playbook -i inventory playbook.yaml
