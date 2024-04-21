@@ -63,7 +63,7 @@ resource "aws_security_group" "instance_sg" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "ec2_public_key2"
-  public_key = file("../$SECRET_FILE") # Path to your public key file
+  public_key = file("public.pem") # Path to your public key file
 }
 
 resource "aws_instance" "ec2_test" {
