@@ -2,44 +2,76 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Terraform Init') {
+        
+        
+         stage('Read Secret File') {
             steps {
-                dir('terraform'){
+                script {
+                    withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE')]) {
+                        
+                        sh 'cat $SECRET_FILE > ./terraform/public.pem '
+                    }
 
-                sh 'pwd'
-                sh 'terraform init'
+                    withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE2')]) {
+                        
+                        sh 'cat $SECRET_FILE2 > ./ansinle/private.pem '
+                    }
+
+
                 }
             }
-        }
+         }
 
-        stage('Terraform Plan') {
+
+
+        stage('Terraform') {
+
+
             
+                        
+                        
+                    
+
+
             steps {
+
+                script {
+                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'awskey']]) {
+                        
                 dir('terraform'){
+
+                sh 'ls'
+                sh 'terraform init'
+                
+
+                
                 // Generate Terraform plan
                 sh 'terraform plan'
-                }
-            }
-        }
+                
 
-        stage('Terraform Apply') {
-            
-            steps {
-                // Apply Terraform changes
-                dir('terraform'){
+                
 
                 sh 'terraform apply -auto-approve'
                 }
+                    }
+                }
+
+
             }
+
+          
+
         }
+
+        
+
 
         stage('Run Ansible Playbook') {
             steps {
 
                 
                 // Execute the ansible-playbook command
-                dir('ansbile'){
+                dir('ansible'){
 
                 
                 sh '''
@@ -52,5 +84,6 @@ pipeline {
 
 
     }
-    }
 }
+
+}  
