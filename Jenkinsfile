@@ -14,7 +14,7 @@ pipeline {
 
                     withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE2')]) {
                         
-                        sh 'cat $SECRET_FILE2 > ./ansinle/private.pem '
+                        sh 'cat $SECRET_FILE2 > ./ansible/private.pem '
                     }
 
 
