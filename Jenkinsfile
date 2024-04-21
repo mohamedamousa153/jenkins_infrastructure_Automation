@@ -5,15 +5,20 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
+                dir('terraform'){
                 // Initialize Terraform
                 sh 'terraform init'
+                }
             }
         }
 
         stage('Terraform Plan') {
+            
             steps {
+                dir('terraform'){
                 // Generate Terraform plan
                 sh 'terraform plan'
+                }
             }
         }
 
@@ -22,6 +27,7 @@ pipeline {
             steps {
                 // Apply Terraform changes
                 dir('terraform'){
+
                 sh 'terraform apply -auto-approve'
                 }
             }
