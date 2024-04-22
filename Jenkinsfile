@@ -4,31 +4,31 @@ pipeline {
     stages {
         
         
-         stage('Read Secret File') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE_PUBLIC')]) {
+        //  stage('Read Secret File') {
+        //     steps {
+        //         script {
+        //             withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE_PUBLIC')]) {
 
                         
-                        sh 'pwd'
-                        sh 'cat $SECRET_FILE_PUBLIC > /var/jenkins_home/workspace/first/terraform/id_rsa.pub'
+        //                 sh 'pwd'
+        //                 sh 'cat $SECRET_FILE_PUBLIC > /var/jenkins_home/workspace/first/terraform/id_rsa.pub'
                         
                       
-                    }
+        //             }
 
-                    withCredentials([file(credentialsId: 'jenkinstest_prirvate', variable: 'SECRET_FILE_PRIVATE')]) {
+        //             withCredentials([file(credentialsId: 'jenkinstest_prirvate', variable: 'SECRET_FILE_PRIVATE')]) {
                         
                         
-                        sh 'cat $SECRET_FILE_PRIVATE > /var/jenkins_home/workspace/first/ansible/jenkinstest.pem'
+        //                 sh 'cat $SECRET_FILE_PRIVATE > /var/jenkins_home/workspace/first/ansible/jenkinstest.pem'
 
                         
                         
-                    }
+        //             }
 
 
-                }
-            }
-         }
+        //         }
+        //     }
+        //  }
 
 
 
