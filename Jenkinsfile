@@ -86,11 +86,12 @@ pipeline {
                 sh 'sleep 1m'
 
                 sh 'ls'
+                sh 'ansible-playbook -i inventory --private-key = /var/jenkins_home/jenkinstest.pem -u ubuntu playbook.yaml '
                 
-                sh '''
-                   host_key_checking = False ansible-playbook playbook.yaml
+                // sh '''
+                //    host_key_checking = False ansible-playbook playbook.yaml
 
-                '''
+                // '''
             }
             }
         
