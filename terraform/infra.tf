@@ -75,10 +75,14 @@ resource "aws_instance" "ec2_test" {
 }
 
 
-resource "null_resource" "append_public_ip" {
-  provisioner "local-exec" {
-    command = "echo ${aws_instance.ec2_test.public_ip} > ./inventory"
+# resource "null_resource" "append_public_ip" {
+#   provisioner "local-exec" {
     
-  }
-}
+#     command = "echo ${aws_instance.ec2_test.public_ip} > ../ansible/inventory"
+#   }
+# }
 
+resource "local_file" "terraform_inventory" {
+  content  = "${aws_instance.ec2_test.public_ip}"
+  filename = " ../ansbile/inventory"
+}
