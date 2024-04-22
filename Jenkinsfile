@@ -88,7 +88,8 @@ pipeline {
                 sh 'ls'
                 
                 sh '''
-                    ansible-playbook -i inventory playbook.yaml
+                   host_key_checking = False ansible-playbook playbook.yaml
+
                 '''
             }
             }
