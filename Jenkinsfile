@@ -87,7 +87,7 @@ pipeline {
                 echo 'woke up after'
 
                 sh 'ls'
-                sh 'ansible-playbook -i inventory --private-key=/var/jenkins_home/jenkinstest.pem -u ubuntu playbook.yaml'
+                sh 'ansible-playbook -i inventory --private-key=../.ssh/jenkinstest.pem -u ubuntu ./ansible/playbook.yaml'
                 
                 // sh '''
                 //    host_key_checking = False ansible-playbook playbook.yaml
