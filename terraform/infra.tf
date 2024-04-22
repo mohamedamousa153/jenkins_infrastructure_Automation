@@ -61,16 +61,16 @@ resource "aws_security_group" "instance_sg" {
   }
 }
 
-resource "aws_key_pair" "my_key" {
-  key_name   = "ec2_public_key2"
-  public_key = file("./id_rsa.pub") # Path to your public key file
-}
+# resource "aws_key_pair" "my_key" {
+#   key_name   = "ec2_public_key2"
+#   public_key = file("./id_rsa.pub") # Path to your public key file
+# }
 
 resource "aws_instance" "ec2_test" {
   ami                    = "ami-080e1f13689e07408" # Specify the AMI ID of your choice
   instance_type          = "t2.micro"    # Instance type
   subnet_id              = aws_subnet.public_subnet.id
-  key_name               = aws_key_pair.my_key.key_name
+  key_name               = "jenkinstest"
   security_groups        = [aws_security_group.instance_sg.id]
 }
 
