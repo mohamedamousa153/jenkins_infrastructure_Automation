@@ -77,7 +77,7 @@ resource "aws_instance" "ec2_test" {
 
 resource "null_resource" "append_public_ip" {
   provisioner "local-exec" {
-    command = "echo ${aws_instance.ec2_test.public_ip} > ../ansible/inventory"
+    command = "echo ${aws_instance.ec2_test.public_ip} > /var/jenkins_home/workspace/first/ansible/inventory"
   }
 }
 
