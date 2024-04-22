@@ -7,14 +7,14 @@ pipeline {
          stage('Read Secret File') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE')]) {
+                    withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE_PUBLIC')]) {
                         
-                        sh 'cat $SECRET_FILE > ./terraform/public.pem '
+                        sh 'cat $SECRET_FILE_PUBLIC > ./key/id_rsa.pub '
                     }
 
-                    withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE2')]) {
+                    withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE_PRIVATE')]) {
                         
-                        sh 'cat $SECRET_FILE2 > ./ansible/private.pem '
+                        sh 'cat $SECRET_FILE_PRIVATE > ./key/id_rsa '
                     }
 
 
