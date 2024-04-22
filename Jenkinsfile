@@ -9,12 +9,12 @@ pipeline {
                 script {
                     withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE_PUBLIC')]) {
                         
-                        sh 'cat $SECRET_FILE_PUBLIC > ./key/id_rsa.pub '
+                        sh 'cat $SECRET_FILE_PUBLIC > ./terraform/id_rsa.pub '
                     }
 
                     withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE_PRIVATE')]) {
                         
-                        sh 'cat $SECRET_FILE_PRIVATE > ./key/id_rsa '
+                        sh 'cat $SECRET_FILE_PRIVATE > ./ansible/key/id_rsa '
                     }
 
 
