@@ -8,13 +8,21 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'publicKey', variable: 'SECRET_FILE_PUBLIC')]) {
+
                         
-                        sh 'cat $SECRET_FILE_PUBLIC > ./terraform/id_rsa.pub '
+                        sh 'pwd'
+                        sh 'cat $SECRET_FILE_PUBLIC > /var/jenkins_home/workspace/first/terraform/id_rsa.pub'
+                        
+                      
                     }
 
                     withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE_PRIVATE')]) {
                         
-                        sh 'cat $SECRET_FILE_PRIVATE > ./ansible/key/id_rsa '
+                        
+                        sh 'cat $SECRET_FILE_PRIVATE > /var/jenkins_home/workspace/first/ansible/id_rsa'
+
+                        
+                        
                     }
 
 
