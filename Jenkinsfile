@@ -49,6 +49,7 @@ pipeline {
                 dir('terraform'){
 
                 sh 'ls'
+                sh 'rm -rf ../ansible/inventory'
                 sh 'terraform init'
                 
 
