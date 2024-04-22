@@ -83,7 +83,8 @@ pipeline {
                 dir('ansible'){
 
                 
-                sh 'sleep 1m'
+                sleep time: 60, unit:'SECONDS'
+                echo 'woke up after'
 
                 sh 'ls'
                 sh 'ansible-playbook -i inventory --private-key = /var/jenkins_home/jenkinstest.pem -u ubuntu playbook.yaml '
