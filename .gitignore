@@ -4,5 +4,5 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/public.pem
 terraform/.terraform/
-d2
+
 
