@@ -83,6 +83,7 @@ resource "aws_instance" "ec2_test" {
 # }
 
 resource "local_file" "terraform_inventory" {
-  content  = "${aws_instance.ec2_test.public_ip}"
-  filename = " ../ansbile/inventory"
+  
+  content  = aws_instance.ec2_test.public_ip
+  filename = "../ansbile/inventory"
 }
