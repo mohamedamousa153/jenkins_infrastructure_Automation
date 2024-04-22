@@ -82,6 +82,8 @@ pipeline {
                 // Execute the ansible-playbook command
                 dir('ansible'){
 
+                
+                sh 'sleep 1m'
 
                 sh 'ls'
                 
