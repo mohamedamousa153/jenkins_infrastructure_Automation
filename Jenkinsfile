@@ -16,10 +16,10 @@ pipeline {
                       
                     }
 
-                    withCredentials([file(credentialsId: 'privateKey', variable: 'SECRET_FILE_PRIVATE')]) {
+                    withCredentials([file(credentialsId: 'jenkinstest_prirvate', variable: 'SECRET_FILE_PRIVATE')]) {
                         
                         
-                        sh 'cat $SECRET_FILE_PRIVATE > /var/jenkins_home/workspace/first/ansible/id_rsa'
+                        sh 'cat $SECRET_FILE_PRIVATE > /var/jenkins_home/workspace/first/ansible/jenkinstest.pem'
 
                         
                         
